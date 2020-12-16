@@ -1,0 +1,216 @@
+{
+  "version": 2,
+  "projects": {
+    "backend": {
+      "root": "backend",
+      "sourceRoot": "backend/src",
+      "projectType": "application",
+      "prefix": "backend",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/backend",
+            "main": "backend/src/main.ts",
+            "tsConfig": "backend/tsconfig.app.json",
+            "assets": [
+              "backend/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "backend/src/environments/environment.ts",
+                  "with": "backend/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "backend:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "backend/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/backend"
+          ],
+          "options": {
+            "jestConfig": "backend/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend": {
+      "projectType": "application",
+      "root": "./frontend",
+      "sourceRoot": "./frontend/src",
+      "prefix": "tda",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/./frontend",
+            "index": "./frontend/src/index.html",
+            "main": "./frontend/src/main.ts",
+            "polyfills": "./frontend/src/polyfills.ts",
+            "tsConfig": "./frontend/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "./frontend/src/favicon.ico",
+              "./frontend/src/assets"
+            ],
+            "styles": [
+              "./frontend/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "./frontend/src/environments/environment.ts",
+                  "with": "./frontend/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend:build",
+            "proxyConfig": "./frontend/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "./frontend/src/**/*.ts",
+              "./frontend/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/frontend"
+          ],
+          "options": {
+            "jestConfig": "frontend/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+	"serve-with-backend": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "nx serve frontend"
+              },
+              {
+                "command": "nx serve backend"
+              }
+            ],
+            "parallel": true
+          }
+        }
+      }
+    },
+    "frontend-e2e": {
+      "root": "frontend-e2e",
+      "sourceRoot": "frontend-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "frontend-e2e/cypress.json",
+            "tsConfig": "frontend-e2e/tsconfig.e2e.json",
+            "devServerTarget": "frontend:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "frontend:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "frontend-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "frontend",
+  "generators": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress",
+      "strict": true
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "css"
+    }
+  }
+}
