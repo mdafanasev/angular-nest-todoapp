@@ -15,22 +15,13 @@
           "options": {
             "outputPath": "dist/backend",
             "main": "backend/src/main.ts",
-            "tsConfig": "backend/tsconfig.app.json",
-            "assets": [
-              "backend/src/assets"
-            ]
+            "tsConfig": "backend/tsconfig.app.json"
           },
           "configurations": {
             "production": {
               "optimization": true,
               "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "backend/src/environments/environment.ts",
-                  "with": "backend/src/environments/environment.prod.ts"
-                }
-              ]
+              "inspect": false
             }
           }
         },
@@ -151,7 +142,7 @@
             "passWithNoTests": true
           }
         },
-	"serve-with-backend": {
+        "serve-with-backend": {
           "builder": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
