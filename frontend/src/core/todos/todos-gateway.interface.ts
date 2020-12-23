@@ -8,8 +8,6 @@ export interface TodosGateway {
 
   getDone(): Observable<Todo[]>;
 
-  getById(id: number): Observable<Todo>;
-
   makeActive(id: number): Observable<Todo>;
 
   makeDone(id: number): Observable<Todo>;
