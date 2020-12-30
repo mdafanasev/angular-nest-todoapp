@@ -20,4 +20,9 @@ module.exports = {
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
     'jest-preset-angular/build/HTMLCommentSerializer.js',
   ],
+  moduleNameMapper: {
+    '@tda/app/(.*)$': '<rootDir>/src/app/$1',
+    '@tda/core/(.*)$': '<rootDir>/src/core/$1',
+    '@tda/data/(.*)$': '<rootDir>/src/data/$1',
+  },
 };

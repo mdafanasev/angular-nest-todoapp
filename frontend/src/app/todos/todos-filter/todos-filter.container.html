@@ -1,0 +1,6 @@
+<ng-container *ngIf="(value$ | async) as value">
+  <tda-todos-filter-ui
+    [value]="value"
+    (apply)="applyFilter($event)"
+  ></tda-todos-filter-ui>
+</ng-container>

@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  padding: 20px 0;
+}
+
+.group {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  background: rgba(255, 255, 255, 0.16);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+
+.button {
+  background: none;
+  border: none;
+  width: 33.33%;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.button.active {
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.1);
+  color: #6a2cba;
+  height: 42px;
+  position: relative;
+  top: -1px;
+  border-radius: 15px;
+}
+
+.button.active:last-child {
+  right: -1px;
+}
+
+.button.active:first-child {
+  left: -1px;
+}

@@ -14,10 +14,16 @@
     }
   ],
   "compilerOptions": {
+    "baseUrl": "./",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@tda/app/*": ["./src/app/*"],
+      "@tda/core/*": ["./src/core/*"],
+      "@tda/data/*": ["./src/data/*"],
+    }
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

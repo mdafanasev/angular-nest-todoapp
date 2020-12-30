@@ -7,5 +7,7 @@ export type TodosCreateNewResponse = {
 };
 
 export type TodosCreateNewRequest = {
-  subject: string;
+  todo: {
+    subject: string;
+  };
 };

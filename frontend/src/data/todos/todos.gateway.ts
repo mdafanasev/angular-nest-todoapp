@@ -1,19 +1,19 @@
-import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { TodosGetAllResponse } from './api-types/get-all.api';
-import { Todo } from '../../core/todos/todo.entity';
-import { TodosGateway } from '../../core/todos/todos-gateway.interface';
-import { TodosGetDoneResponse } from './api-types/get-done.api';
-import { TodosGetActiveResponse } from './api-types/get-active.api';
+import { Inject, Injectable } from '@angular/core';
+import { Todo } from '@tda/core/todos/todo.entity';
+import { TodosGateway } from '@tda/core/todos/todos-gateway.interface';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import {
   TodosCreateNewRequest,
   TodosCreateNewResponse,
 } from './api-types/create-new.api';
+import { TodosGetActiveResponse } from './api-types/get-active.api';
+import { TodosGetAllResponse } from './api-types/get-all.api';
+import { TodosGetDoneResponse } from './api-types/get-done.api';
 import { TodosMakeActiveResponse } from './api-types/make-active.api';
 import { TodosMakeDoneResponse } from './api-types/make-done.api';
 import { TodosRemoveResponse } from './api-types/remove.api';
-import { map } from 'rxjs/operators';
 import { TODOS_DATA_CONFIG } from './todos-data-config.token';
 import { TodosDataConfig } from './todos-data.module';
 
@@ -32,7 +32,7 @@ export class HttpTodosGateway implements TodosGateway {
 
   getDone(): Observable<Todo[]> {
     return this.http.get<TodosGetDoneResponse>(
-      `${this.config.apiPrefix}?active=true`
+      `${this.config.apiPrefix}?done=true`
     );
   }
 
@@ -43,22 +43,20 @@ export class HttpTodosGateway implements TodosGateway {
   }
 
   createNew(subject: string): Observable<Todo> {
-    const body: TodosCreateNewRequest = { subject };
-    return this.http.post<TodosCreateNewResponse>(this.config.apiPrefix, {
-      body,
-    });
+    const body: TodosCreateNewRequest = { todo: { subject } };
+    return this.http.post<TodosCreateNewResponse>(this.config.apiPrefix, body);
   }
 
   makeActive(id: number): Observable<Todo> {
     return this.http.post<TodosMakeActiveResponse>(
-      `${this.config.apiPrefix} /${id}/make-active`,
+      `${this.config.apiPrefix}/${id}/make-active`,
       {}
     );
   }
 
   makeDone(id: number): Observable<Todo> {
     return this.http.post<TodosMakeDoneResponse>(
-      `${this.config.apiPrefix}/${id}/make-active`,
+      `${this.config.apiPrefix}/${id}/make-done`,
       {}
     );
   }

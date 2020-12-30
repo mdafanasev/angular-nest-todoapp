@@ -17,7 +17,9 @@
         "@angular-eslint/component-selector": [
           "error",
           { "type": "element", "prefix": "tda", "style": "kebab-case" }
-        ]
+        ],
+        "@angular-eslint/no-input-rename": "off",
+        "@angular-eslint/no-output-rename": "off"
       }
     },
     {

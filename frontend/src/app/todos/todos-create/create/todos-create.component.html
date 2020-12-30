@@ -1,0 +1,5 @@
+<div class="label">Add new</div>
+<div class="field">
+  <input [(ngModel)]="subject" class="input" />
+  <button [disabled]="!canCreate" (click)="submit()" class="button">Add</button>
+</div>

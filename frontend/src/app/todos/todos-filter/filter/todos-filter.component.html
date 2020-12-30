@@ -1,0 +1,13 @@
+<div class="group" *ngIf="value">
+  <button class="button" [class.active]="isOnlyDone" (click)="setOnlyDone()">
+    Done
+  </button>
+  <button
+    class="button"
+    [class.active]="isOnlyActive"
+    (click)="setOnlyActive()"
+  >
+    Active
+  </button>
+  <button class="button" [class.active]="isAll" (click)="setAll()">All</button>
+</div>

@@ -1,0 +1,7 @@
+<tda-todo-item
+  *ngFor="let todo of todos"
+  [todo]="todo"
+  (makeDone)="makeDone.emit(todo.id)"
+  (makeActive)="makeActive.emit(todo.id)"
+>
+</tda-todo-item>

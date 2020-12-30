@@ -1,0 +1,10 @@
+<ng-container *ngIf="(todos$ | async) as todos; else preloader">
+  <tda-todo-list-ui
+    [todos]="todos"
+    (makeDone)="makeDone($event)"
+    (makeActive)="makeActive($event)"
+  ></tda-todo-list-ui>
+</ng-container>
+<ng-template #preloader>
+  <div>Loading...</div>
+</ng-template>

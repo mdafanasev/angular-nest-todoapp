@@ -1,0 +1,9 @@
+<div class="item" *ngIf="todo">
+  <button
+    (click)="toggle()"
+    class="toggle"
+    [class.active]="isActive"
+    [class.done]="isDone"
+  ></button>
+  <h2 class="subject">{{ todo.subject }}</h2>
+</div>

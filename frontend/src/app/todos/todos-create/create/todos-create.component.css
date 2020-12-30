@@ -1,0 +1,60 @@
+:host {
+  display: block;
+  margin-bottom: 40px;
+}
+
+.label {
+  display: block;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.input {
+  height: 40px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+  border-radius: 15px;
+  width: 100%;
+  padding: 0 130px 0 20px;
+  color: #fff;
+  outline: none;
+}
+
+.button {
+  position: absolute;
+  right: 0;
+  top: -1px;
+  width: 120px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.75);
+  border: none;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  color: #675672;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.button:disabled {
+  background: rgba(255, 255, 255, 0.5);
+  height: 40px;
+  top: 0;
+  color: #9b9a9b;
+  box-shadow: none;
+}
